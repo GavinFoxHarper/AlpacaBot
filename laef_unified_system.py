@@ -68,7 +68,7 @@ class LAEFUnifiedSystem:
             return
         
         try:
-            from core.live_trader_unified import LAEFLiveTrader
+            from trading.unified_trading_engine import LAEFLiveTrader
             
             print("\nInitializing LAEF Live Trader...")
             print("- Connecting to Alpaca Live API")
@@ -117,7 +117,7 @@ class LAEFUnifiedSystem:
             return
         
         try:
-            from core.live_trader_unified import LAEFLiveTrader
+            from trading.unified_trading_engine import LAEFLiveTrader
             
             print("\nInitializing LAEF Paper Trader...")
             print("- Connecting to Alpaca Paper Trading API")
@@ -211,7 +211,7 @@ class LAEFUnifiedSystem:
         print("  - Auto Config: Live parameter optimization")
         
         try:
-            from trading.backtester_unified import LAEFBacktester
+            from trading.hybrid_trading_engine import LAEFBacktester
             
             backtester = LAEFBacktester(
                 initial_cash=50000,
@@ -282,7 +282,7 @@ class LAEFUnifiedSystem:
             else:
                 # Use smart selector for other options
                 try:
-                    from core.smart_stock_selector import SmartStockSelector
+                    from optimization.smart_stock_selector import SmartStockSelector
                     selector = SmartStockSelector()
                     selection_map = {'3': 'momentum', '4': 'volume', '5': 'value'}
                     selection_type = selection_map.get(stock_choice, 'momentum')
@@ -337,7 +337,7 @@ class LAEFUnifiedSystem:
             print(f"Period: {start_date} to {end_date}")
             print(f"Initial Cash: ${initial_cash:,.2f}")
             
-            from trading.backtester_unified import LAEFBacktester
+            from trading.hybrid_trading_engine import LAEFBacktester
             
             backtester = LAEFBacktester(
                 initial_cash=initial_cash,
@@ -398,7 +398,7 @@ class LAEFUnifiedSystem:
         print("="*50)
         
         try:
-            from core.interactive_explorer import InteractiveResultExplorer
+            from utils.interactive_explorer import InteractiveResultExplorer
             
             explorer = InteractiveResultExplorer()
             if explorer.load_backtest_results():
@@ -457,8 +457,8 @@ class LAEFUnifiedSystem:
         print("="*50)
         
         try:
-            from core.online_learning_manager import OnlineLearningManager
-            from core.agent_unified import LAEFAgent
+            from training.live_market_learner import OnlineLearningManager
+            from training.q_learning_agent import LAEFAgent
             
             # Get symbols to monitor
             print("\nEnter symbols to monitor (comma-separated)")
@@ -634,7 +634,7 @@ class LAEFUnifiedSystem:
         print("="*50)
         
         try:
-            from core.interactive_explorer import InteractiveResultExplorer
+            from utils.interactive_explorer import InteractiveResultExplorer
             
             explorer = InteractiveResultExplorer()
             if explorer.load_backtest_results():
@@ -699,7 +699,7 @@ class LAEFUnifiedSystem:
         print("="*50)
         
         try:
-            from core.parameter_optimizer import LAEFParameterOptimizer
+            from optimization.parameter_optimizer import LAEFParameterOptimizer
             
             print("\nStarting LAEF parameter optimization...")
             print("This will find optimal parameters for:")
