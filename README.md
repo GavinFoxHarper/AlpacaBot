@@ -1,158 +1,97 @@
-# LAEF Trading System
+# LAEF Trading Platform
 
-**Learn, Adapt, Execute, Forecast** - A fully autonomous, adaptive trading intelligence framework.
+LAEF (Learning-Augmented Equity Framework) is an advanced algorithmic trading platform that combines machine learning with traditional trading strategies.
 
-## 🚀 Quick Start
+## Features
 
-### Interactive Mode
+- Adaptive trading strategies with real-time market analysis
+- Hybrid approach combining Q-learning with momentum-based scalping
+- Multi-timeframe pattern recognition and backtesting
+- Risk management and position sizing optimization
+- Enhanced news sentiment integration
+- Advanced risk-adjusted reward calculation
+
+## Core Components
+
+### Trading Engines
+- **Unified Trading Engine**: Main engine supporting multiple strategies and adaptive mode
+- **Hybrid Trading Engine**: Combines day and swing trading with momentum analysis 
+- **LAEF AI Strategy**: Pure machine learning-based decision making
+- **Unified Q-Value Handler**: Advanced Q-value processing with market regime adaptation
+
+### Market Analysis
+- Pattern Recognition Analyzer: Detects micro and macro market patterns
+- Smart Stock Selector: Intelligent stock screening and selection
+- Enhanced Live Learner: Continuous model improvement with advanced performance tracking
+- News Integration System: Real-time news sentiment analysis and trading signals
+
+### Risk Management
+- Dynamic position sizing based on market conditions
+- Multi-level stop loss and profit target system
+- Risk-adjusted reward system with multiple reward types
+- Advanced drawdown and volatility management
+
+## Getting Started
+
+1. Clone the repository:
 ```bash
-python laef_unified_system.py
+git clone https://github.com/yourusername/laef-trading.git
+cd laef-trading
 ```
 
-### Direct Launch
+2. Create and activate a virtual environment:
 ```bash
-python start_laef_interactive.py
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate    # Windows
 ```
 
-## 📁 Project Structure
-
-### Core LAEF System
-- **`laef/`** - Complete LAEF implementation with all 9 strategies
-- **`laef_unified_system.py`** - Main entry point with interactive menu
-- **`start_laef_interactive.py`** - Quick launcher script
-
-### All 9 Trading Strategies ✅
-1. **Momentum Scalping** - Quick buy/sell loops with ultra-tight stops
-2. **Mean Reversion** - RSI/Bollinger Band reversals
-3. **Statistical Arbitrage** - Pair trading with co-integration
-4. **Dual-Model Swing** - Q-learning + ML profit prediction
-5. **Pattern Recognition** - CNN/LSTM candlestick & chart patterns
-6. **Time-Based Algorithm** - Session-specific behavior adjustments
-7. **News Sentiment** - NLP analysis of company news & headlines
-8. **Hybrid Adaptive** - Multi-strategy combination with dynamic weights
-9. **Reinforced Grid Search** - Continuous parameter optimization
-
-### Supporting Systems
-- **`core/`** - Technical indicators, portfolio management
-- **`data/`** - Multi-source data fetching and caching
-- **`trading/`** - Alpaca API integration and backtesting
-- **`training/`** - ML model training and prediction tracking
-- **`optimization/`** - Strategy parameter optimization
-- **`utils/`** - Utility functions and helpers
-- **`config_profiles/`** - Pre-configured trading profiles
-- **`models/`** - Trained ML models (Q-learning, etc.)
-
-### Configuration & Data
-- **`requirements.txt`** - Python dependencies
-- **`config.py`** - System configuration
-- **`.env`** - API keys and secrets (not in git)
-- **`tickers_cleaned.csv`** - Symbol universe
-
-### Documentation & Testing
-- **`docs/`** - Training guides and documentation
-- **`tests/`** - Test suites for backtesting
-- **`testing/`** - System validation tests
-- **`LAEF_Implementation_Progress.md`** - Implementation status report
-
-### Archive
-- **`legacy/`** - Obsolete files (organized and documented)
-
-## 🎯 Available Modes
-
-### 1. Paper Trading (Simulation)
-- Uses Alpaca Paper Trading API
-- Simulated trades with virtual money
-- Perfect for testing strategies
-- No financial risk
-
-### 2. Backtesting (Historical Analysis)
-- Analyze strategy performance on historical data
-- No actual trading
-- Generate performance reports
-- ML-focused analysis
-
-### 3. Live Learning (AI Training)
-- Real-time market analysis and learning
-- ML prediction tracking
-- No actual trading
-- Improve AI models
-
-### 4. Configuration & Status
-- Check API connection
-- View current configuration
-- Test components
-
-## 🔧 Setup
-
-### 1. Install Dependencies
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Configure API Keys
-Create `.env` file with:
-```
-ALPACA_API_KEY=your_paper_api_key
-ALPACA_SECRET_KEY=your_paper_secret_key
-```
-
-### 3. Run System
+4. Set up your environment variables:
 ```bash
-python laef_unified_system.py
+cp .env.example .env
+# Edit .env with your API keys and configuration
 ```
 
-## 📊 System Features
+5. Run the trading system:
+```bash
+python main_trading.py              # Main trading interface
+python start_laef_interactive.py    # Interactive mode
+```
 
-- **✅ All 9 LAEF strategies implemented**
-- **✅ Real-time market data integration**
-- **✅ Multi-broker support (Alpaca)**
-- **✅ Paper trading for safe testing**
-- **✅ Comprehensive backtesting**
-- **✅ ML-based predictions**
-- **✅ Risk management**
-- **✅ Performance analytics**
-- **✅ Configuration profiles**
+## Configuration
 
-## 🛡️ Safety Features
+- Use `config_profiles/` directory for custom trading configurations
+- Key parameters in default.json:
+  - q_buy/q_sell: AI confidence thresholds
+  - momentum_threshold: Price momentum triggers
+  - position_size: Risk management limits
+  - reward_type: Risk-adjusted reward calculation method
+  - market_regime_weights: Strategy weights per market regime
 
-- **Paper Trading First** - Always test with virtual money
-- **Risk Management** - Built-in position sizing and stop losses
-- **API Rate Limiting** - Respects broker API limits
-- **Error Handling** - Graceful failure recovery
-- **Logging** - Comprehensive trade and system logging
+## Documentation
 
-## 📈 Performance Tracking
+See [CLAUDE.md](CLAUDE.md) for detailed documentation and implementation details.
 
-- Win rate and profit/loss tracking
-- Strategy-specific performance metrics
-- Real-time portfolio monitoring
-- Historical performance analysis
-- Risk-adjusted returns
+## Security Notes
 
-## 🔄 Continuous Learning
+- Never commit API keys or credentials
+- Use environment variables for sensitive configuration
+- Follow security best practices for financial data handling
+- Implement proper error handling and logging
 
-The LAEF system continuously learns and adapts:
-- Strategy performance tracking
-- Parameter optimization
-- Market regime detection
-- Adaptive position sizing
-- Reinforcement learning feedback
+## Contributing
 
-## ⚠️ Important Notes
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-- **Start with Paper Trading** to test strategies
-- **Never share API keys**
-- **Monitor system performance** regularly
-- **Review logs** for any issues
-- **Backup your configuration** before changes
+## License
 
-## 📞 Support
-
-- Check `logs/` directory for system logs
-- Review `LAEF_Implementation_Progress.md` for technical details
-- All obsolete files moved to `legacy/` folder
-- Configuration examples in `config_profiles/`
-
----
-
-*LAEF System - Fully implemented with all 9 strategies - Ready for trading!* 🚀
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

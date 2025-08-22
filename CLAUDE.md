@@ -40,13 +40,13 @@ LAEF (Learning-Augmented Equity Framework) is an advanced algorithmic trading pl
 pip install -r requirements.txt 
 
 # Testing
-python -m pytest tests/
+pytest tests/
 pytest tests/test_laef_system.py    # System validation
 pytest tests/test_laef_ai_strategy.py  # AI strategy tests
 
 # Run Trading System
-python main_trading.py              # Main trading interface
-python start_laef_interactive.py    # Interactive mode
+python core/main_trading.py              # Main trading interface
+python core/start_laef_interactive.py    # Interactive mode
 ```
 
 ### Development Notes
@@ -60,7 +60,7 @@ python start_laef_interactive.py    # Interactive mode
 
 2. **Trading Modes**:
    - paper_trading: Virtual trading for testing
-   - live_learning: ML model training with enhanced feedback loop
+   - live_learning: ML model training
    - backtesting: Strategy validation
    - regime_specific: Market regime-specific strategy selection
 
@@ -75,24 +75,60 @@ python start_laef_interactive.py    # Interactive mode
 The codebase follows a modular architecture:
 
 ```
-laef/
-├── core/            # Core trading components
-├── data/            # Market data management
-├── training/        # ML model training
-├── trading/         # Trading engines and strategy
-├── optimization/    # Parameter optimization
-├── news/           # News sentiment analysis
-└── utils/          # Helper utilities
+.
+├── core/                    # Core system components
+│   ├── config.py           # Configuration management
+│   ├── portfolio_manager.py
+│   ├── technical_indicators.py
+│   └── unified_system.py   # Main system interface
+│
+├── data/                    # Market data management
+│   ├── market_data_fetcher.py
+│   └── data_preprocessor.py
+│
+├── laef/                    # Trading strategies
+│   ├── momentum_scalping.py
+│   ├── mean_reversion.py
+│   ├── pattern_recognition.py
+│   ├── news_sentiment.py
+│   └── statistical_arbitrage.py
+│
+├── training/               # ML model training
+│   ├── live_learner.py
+│   ├── q_learning_agent.py
+│   └── experience_buffer.py
+│
+├── trading/               # Trading execution
+│   ├── hybrid_trading_engine.py
+│   └── unified_trading_engine.py
+│
+├── optimization/          # Parameter optimization
+│   ├── parameter_optimizer.py
+│   └── smart_stock_selector.py
+│
+├── tests/                # Testing components
+│   ├── test_laef_system.py
+│   └── test_laef_ai_strategy.py
+│
+├── utils/                # Helper utilities
+│   ├── config_manager.py
+│   └── logging_utils.py
+│
+├── config_profiles/      # Trading configurations
+│   └── default.json
+│
+├── models/              # Trained ML models
+│   └── README.md
+│
+└── logs/               # System logs
+    └── README.md
 ```
 
 ### Key Files
-- laef_unified_system.py: Main trading system interface
-- strategy_pattern_recognition.py: Market pattern detection
-- parameter_optimizer.py: Trading parameter optimization
-- live_market_learner.py: Real-time ML improvements
-- q_value_handler.py: Advanced Q-value processing
-- risk_adjusted_reward_system.py: Enhanced reward calculation
-- news_integration_system.py: News sentiment analysis
+- core/unified_system.py: Main trading system interface
+- laef/pattern_recognition.py: Market pattern detection
+- optimization/parameter_optimizer.py: Trading parameter optimization
+- training/live_learner.py: Real-time ML improvements
 
 ## Security and Risk
 
