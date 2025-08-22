@@ -1,0 +1,32 @@
+{
+  "paper_trading": true,
+  "logging_level": "INFO",
+  "reward_type": "sharpe_adjusted",
+  "risk_level": "standard",
+  "strategy_weights": {
+    "momentum_scalping": 1.0,
+    "mean_reversion": 1.0,
+    "statistical_arbitrage": 0.8,
+    "dual_model_swing": 1.2,
+    "pattern_recognition": 1.0,
+    "time_based_algorithm": 0.6,
+    "news_sentiment": 0.8,
+    "hybrid_adaptive": 1.5
+  },
+  "q_buy": 0.65,
+  "q_sell": 0.35,
+  "rsi_oversold": 30,
+  "rsi_overbought": 70,
+  "stop_loss_pct": 0.97,
+  "trailing_stop_pct": 0.06,
+  "volatility_penalty_factor": 0.2,
+  "drawdown_penalty_factor": 0.5,
+  "max_drawdown_threshold": 0.05,
+  "consistency_window": 10,
+  "consistency_bonus_factor": 0.1,
+  "timing_bonus_enabled": true,
+  "market_timing_weight": 0.15,
+  "max_active_strategies": 4,
+  "min_strategy_score": 0.6,
+  "signal_aggregation_method": "weighted_average"
+}
