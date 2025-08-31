@@ -1,0 +1,476 @@
+{
+  "quick_backtest": {
+    "status": "completed",
+    "timestamp": "2025-08-26T03:01:17.377557",
+    "config": {
+      "initial_cash": 50000,
+      "period": "2024-10-01 to 2024-12-31",
+      "smart_selection": true
+    },
+    "results": {
+      "status": "completed",
+      "initial_cash": 50000,
+      "symbols": [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "TSLA",
+        "NVDA"
+      ],
+      "start_date": "2025-05-28",
+      "end_date": "2025-08-26",
+      "total_trades": 0,
+      "win_rate": 0,
+      "final_value": 50000,
+      "total_return": 0
+    }
+  },
+  "advanced_backtests": [
+    {
+      "name": "Conservative Strategy",
+      "status": "completed",
+      "config": {
+        "name": "Conservative Strategy",
+        "initial_cash": 25000,
+        "start_date": "2024-01-01",
+        "end_date": "2024-03-31",
+        "risk_per_trade": 0.01,
+        "max_position_size": 0.05,
+        "stop_loss": 0.01,
+        "profit_target": 0.02
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 25000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 25000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:18.418557"
+    },
+    {
+      "name": "Aggressive Strategy",
+      "status": "completed",
+      "config": {
+        "name": "Aggressive Strategy",
+        "initial_cash": 100000,
+        "start_date": "2024-04-01",
+        "end_date": "2024-06-30",
+        "risk_per_trade": 0.05,
+        "max_position_size": 0.2,
+        "stop_loss": 0.03,
+        "profit_target": 0.05
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 100000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 100000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:19.419738"
+    },
+    {
+      "name": "Balanced Strategy",
+      "status": "completed",
+      "config": {
+        "name": "Balanced Strategy",
+        "initial_cash": 50000,
+        "start_date": "2024-07-01",
+        "end_date": "2024-09-30",
+        "risk_per_trade": 0.02,
+        "max_position_size": 0.1,
+        "stop_loss": 0.02,
+        "profit_target": 0.03
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:20.421023"
+    },
+    {
+      "name": "Long-term Growth",
+      "status": "completed",
+      "config": {
+        "name": "Long-term Growth",
+        "initial_cash": 75000,
+        "start_date": "2024-01-01",
+        "end_date": "2024-12-31",
+        "risk_per_trade": 0.015,
+        "max_position_size": 0.08,
+        "stop_loss": 0.015,
+        "profit_target": 0.04
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 75000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 75000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:21.422504"
+    }
+  ],
+  "strategy_comparison": [
+    {
+      "strategy": "momentum_scalping",
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:22.423710"
+    },
+    {
+      "strategy": "mean_reversion",
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:22.924769"
+    },
+    {
+      "strategy": "statistical_arbitrage",
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:23.425723"
+    },
+    {
+      "strategy": "dual_model_swing",
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:23.926958"
+    },
+    {
+      "strategy": "pattern_recognition",
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:24.428356"
+    },
+    {
+      "strategy": "time_based",
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:24.929444"
+    },
+    {
+      "strategy": "news_sentiment",
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:25.430807"
+    },
+    {
+      "strategy": "hybrid_adaptive",
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:25.931756"
+    },
+    {
+      "strategy": "reinforced_grid",
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:26.432701"
+    }
+  ],
+  "asset_groups": [
+    {
+      "name": "Tech Giants",
+      "symbols": [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "META",
+        "AMZN"
+      ],
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "META",
+          "AMZN"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:26.933857"
+    },
+    {
+      "name": "EV & Clean Energy",
+      "symbols": [
+        "TSLA",
+        "RIVN",
+        "NIO",
+        "PLUG",
+        "ENPH"
+      ],
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "TSLA",
+          "RIVN",
+          "NIO",
+          "PLUG",
+          "ENPH"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:27.934836"
+    },
+    {
+      "name": "Financial Sector",
+      "symbols": [
+        "JPM",
+        "BAC",
+        "GS",
+        "MS",
+        "WFC"
+      ],
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "JPM",
+          "BAC",
+          "GS",
+          "MS",
+          "WFC"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:28.935695"
+    },
+    {
+      "name": "High Volatility",
+      "symbols": [
+        "GME",
+        "AMC",
+        "BBBY",
+        "SPCE",
+        "WISH"
+      ],
+      "status": "completed",
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "symbols": [
+          "GME",
+          "AMC",
+          "BBBY",
+          "SPCE",
+          "WISH"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "win_rate": 0,
+        "final_value": 50000,
+        "total_return": 0
+      },
+      "timestamp": "2025-08-26T03:01:29.936815"
+    }
+  ]
+}

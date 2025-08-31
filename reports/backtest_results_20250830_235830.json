@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "initial_cash": 100000,
+  "final_value": 99900.35334036256,
+  "total_return": -0.09964665963743756,
+  "symbols": [
+    "AAPL",
+    "META",
+    "NVDA",
+    "GOOGL",
+    "TSM",
+    "ARKW",
+    "ARKQ",
+    "SPY"
+  ],
+  "start_date": "2025-06-01",
+  "end_date": "2025-08-30",
+  "total_trades": 0,
+  "winning_trades": 0,
+  "losing_trades": 0,
+  "win_rate": 0,
+  "avg_profit": 0,
+  "avg_loss": 0,
+  "sharpe_ratio": 0.7700539918170265,
+  "total_decisions": 504,
+  "buy_signals": 352,
+  "sell_signals": 0,
+  "hold_signals": 152,
+  "symbol_pnl": {},
+  "grand_total_pnl": 0
+}

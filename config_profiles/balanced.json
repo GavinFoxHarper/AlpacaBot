@@ -1,0 +1,48 @@
+{
+    "name": "Balanced",
+    "description": "Balanced risk and reward",
+    "PAPER_TRADING": true,
+    "MAX_POSITIONS": 10,
+    "MAX_POSITION_SIZE": 1000,
+    "STOP_LOSS_PERCENT": 2.0,
+    "TAKE_PROFIT_PERCENT": 5.0,
+    "TIMEFRAME": "5Min",
+    "STRATEGIES": {
+        "momentum_scalping": {
+            "enabled": true,
+            "weight": 0.15
+        },
+        "mean_reversion": {
+            "enabled": true,
+            "weight": 0.15
+        },
+        "statistical_arbitrage": {
+            "enabled": true,
+            "weight": 0.1
+        },
+        "dual_model_swing": {
+            "enabled": true,
+            "weight": 0.1
+        },
+        "pattern_recognition": {
+            "enabled": true,
+            "weight": 0.1
+        },
+        "time_based": {
+            "enabled": true,
+            "weight": 0.1
+        },
+        "news_sentiment": {
+            "enabled": true,
+            "weight": 0.1
+        },
+        "hybrid_adaptive": {
+            "enabled": true,
+            "weight": 0.1
+        },
+        "reinforced_grid": {
+            "enabled": true,
+            "weight": 0.1
+        }
+    }
+}

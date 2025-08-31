@@ -7,7 +7,7 @@ from laef.base_strategy import BaseStrategy
 from core.portfolio_manager import FIFOPortfolio
 
 # Import existing engines
-from trading.unified_trading_engine import DualModelTradingEngine
+from trading.unified_trading_engine import UnifiedTradingEngine as DualModelTradingEngine
 from trading.hybrid_trading_engine import HybridTradingEngine
 from laef.momentum_scalping_engine import MomentumScalpingEngine
 from laef.laef_ai_trading_engine import LAEFAITradingEngine as AIMomentumScalpingEngine

@@ -1,0 +1,48 @@
+{
+    "name": "Conservative",
+    "description": "Low risk, stable returns",
+    "PAPER_TRADING": true,
+    "MAX_POSITIONS": 5,
+    "MAX_POSITION_SIZE": 500,
+    "STOP_LOSS_PERCENT": 1.5,
+    "TAKE_PROFIT_PERCENT": 3.0,
+    "TIMEFRAME": "15Min",
+    "STRATEGIES": {
+        "mean_reversion": {
+            "enabled": true,
+            "weight": 0.4
+        },
+        "statistical_arbitrage": {
+            "enabled": true,
+            "weight": 0.3
+        },
+        "dual_model_swing": {
+            "enabled": true,
+            "weight": 0.3
+        },
+        "momentum_scalping": {
+            "enabled": false,
+            "weight": 0.0
+        },
+        "pattern_recognition": {
+            "enabled": false,
+            "weight": 0.0
+        },
+        "time_based": {
+            "enabled": false,
+            "weight": 0.0
+        },
+        "news_sentiment": {
+            "enabled": false,
+            "weight": 0.0
+        },
+        "hybrid_adaptive": {
+            "enabled": false,
+            "weight": 0.0
+        },
+        "reinforced_grid": {
+            "enabled": false,
+            "weight": 0.0
+        }
+    }
+}

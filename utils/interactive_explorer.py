@@ -28,37 +28,47 @@ class InteractiveResultExplorer:
         """Load backtest results from files"""
         try:
             if timestamp:
-                # Load specific backtest
-                decisions_file = f'logs/backtest_decisions_{timestamp}.csv'
-                trades_file = f'logs/backtest_trades_{timestamp}.csv'
-                summary_file = f'logs/backtest_summary_{timestamp}.txt'
+                # Load specific backtest from reports directory
+                trades_file = f'reports/backtest_trades_{timestamp}.csv'
+                metrics_file = f'reports/backtest_metrics_{timestamp}.json'
+                portfolio_file = f'reports/backtest_portfolio_{timestamp}.csv'
             else:
-                # Load most recent backtest
+                # Load most recent backtest from reports directory
                 import glob
-                decision_files = glob.glob('logs/backtest_decisions_*.csv')
-                if not decision_files:
-                    print("No backtest results found")
-                    return False
-                    
-                # Get most recent file
-                decisions_file = max(decision_files, key=os.path.getctime)
-                timestamp = decisions_file.split('_')[-1].replace('.csv', '')
-                trades_file = f'logs/backtest_trades_{timestamp}.csv'
-                summary_file = f'logs/backtest_summary_{timestamp}.txt'
+                trade_files = glob.glob('reports/backtest_trades_*.csv')
+                if not trade_files:
+                    # Try alternative pattern
+                    metric_files = glob.glob('reports/backtest_metrics_*.json')
+                    if not metric_files:
+                        print("No backtest results found")
+                        return False
+                    else:
+                        # Get most recent metrics file
+                        metrics_file = max(metric_files, key=os.path.getctime)
+                        timestamp = metrics_file.split('_')[-1].replace('.json', '')
+                        trades_file = f'reports/backtest_trades_{timestamp}.csv'
+                        portfolio_file = f'reports/backtest_portfolio_{timestamp}.csv'
+                else:
+                    # Get most recent trade file
+                    trades_file = max(trade_files, key=os.path.getctime)
+                    timestamp = trades_file.split('_')[-1].replace('.csv', '')
+                    metrics_file = f'reports/backtest_metrics_{timestamp}.json'
+                    portfolio_file = f'reports/backtest_portfolio_{timestamp}.csv'
             
             # Load data
-            if os.path.exists(decisions_file):
-                self.decision_history = pd.read_csv(decisions_file)
-                self.loaded_files['decisions'] = decisions_file
-                
             if os.path.exists(trades_file):
                 self.trade_history = pd.read_csv(trades_file)
                 self.loaded_files['trades'] = trades_file
                 
-            if os.path.exists(summary_file):
-                with open(summary_file, 'r') as f:
-                    self.loaded_files['summary'] = summary_file
-                    self.summary_text = f.read()
+            if os.path.exists(metrics_file):
+                import json
+                with open(metrics_file, 'r') as f:
+                    self.performance_metrics = json.load(f)
+                self.loaded_files['metrics'] = metrics_file
+                
+            if os.path.exists(portfolio_file):
+                self.portfolio_history = pd.read_csv(portfolio_file)
+                self.loaded_files['portfolio'] = portfolio_file
             
             print(f"Loaded backtest results from {timestamp}")
             return True
@@ -150,7 +160,13 @@ class InteractiveResultExplorer:
                 print(f"Average Loss: {avg_loss:.2%}")
                 print(f"Win/Loss Ratio: {abs(avg_win/avg_loss):.2f}" if avg_loss != 0 else "N/A")
         
-        input("\nPress Enter to continue...")
+        if hasattr(self, '_interactive_mode') and not self._interactive_mode:
+            print("\n[Non-interactive mode - continuing automatically]")
+        else:
+            try:
+                input("\nPress Enter to continue...")
+            except EOFError:
+                print("\n[Non-interactive mode - continuing automatically]")
     
     def analyze_trades(self):
         """Detailed trade analysis"""
@@ -238,7 +254,13 @@ class InteractiveResultExplorer:
         print(f"Worst Trade: {sell_trades['profit_pct'].min():.2%}")
         print(f"P&L Std Dev: {sell_trades['profit_pct'].std():.2%}")
         
-        input("\nPress Enter to continue...")
+        if hasattr(self, '_interactive_mode') and not self._interactive_mode:
+            print("\n[Non-interactive mode - continuing automatically]")
+        else:
+            try:
+                input("\nPress Enter to continue...")
+            except EOFError:
+                print("\n[Non-interactive mode - continuing automatically]")
     
     def _analyze_contributing_factors(self, trades_df):
         """Analyze factors contributing to trade outcomes"""
@@ -323,7 +345,13 @@ class InteractiveResultExplorer:
         else:
             print("No completed trades to analyze")
         
-        input("\nPress Enter to continue...")
+        if hasattr(self, '_interactive_mode') and not self._interactive_mode:
+            print("\n[Non-interactive mode - continuing automatically]")
+        else:
+            try:
+                input("\nPress Enter to continue...")
+            except EOFError:
+                print("\n[Non-interactive mode - continuing automatically]")
     
     def analyze_decision_patterns(self):
         """Analyze trading decision patterns"""
@@ -365,7 +393,13 @@ class InteractiveResultExplorer:
             print(f"Average Sell Decisions per Day: {daily_decisions.get('SELL', 0).mean():.1f}")
             print(f"Most Active Day: {daily_decisions.sum(axis=1).idxmax()} ({daily_decisions.sum(axis=1).max()} decisions)")
         
-        input("\nPress Enter to continue...")
+        if hasattr(self, '_interactive_mode') and not self._interactive_mode:
+            print("\n[Non-interactive mode - continuing automatically]")
+        else:
+            try:
+                input("\nPress Enter to continue...")
+            except EOFError:
+                print("\n[Non-interactive mode - continuing automatically]")
     
     def analyze_win_loss_distribution(self):
         """Analyze win/loss distribution"""
@@ -423,7 +457,13 @@ class InteractiveResultExplorer:
         print("\nCONSECUTIVE PATTERNS:")
         self._analyze_consecutive_patterns(sell_trades)
         
-        input("\nPress Enter to continue...")
+        if hasattr(self, '_interactive_mode') and not self._interactive_mode:
+            print("\n[Non-interactive mode - continuing automatically]")
+        else:
+            try:
+                input("\nPress Enter to continue...")
+            except EOFError:
+                print("\n[Non-interactive mode - continuing automatically]")
     
     def _analyze_consecutive_patterns(self, trades_df):
         """Analyze consecutive win/loss patterns"""
@@ -507,7 +547,13 @@ class InteractiveResultExplorer:
         if not weekday_sells.empty:
             print(weekday_sells.to_string())
         
-        input("\nPress Enter to continue...")
+        if hasattr(self, '_interactive_mode') and not self._interactive_mode:
+            print("\n[Non-interactive mode - continuing automatically]")
+        else:
+            try:
+                input("\nPress Enter to continue...")
+            except EOFError:
+                print("\n[Non-interactive mode - continuing automatically]")
     
     def analyze_risk_metrics(self):
         """Analyze risk-related metrics"""
@@ -568,7 +614,13 @@ class InteractiveResultExplorer:
             print(f"  Total Losses: {losing_trades.sum():.2%}")
             print(f"  Trades Needed to Recover (at avg win): {abs(losing_trades.sum()/avg_win):.1f}" if avg_win > 0 else "N/A")
         
-        input("\nPress Enter to continue...")
+        if hasattr(self, '_interactive_mode') and not self._interactive_mode:
+            print("\n[Non-interactive mode - continuing automatically]")
+        else:
+            try:
+                input("\nPress Enter to continue...")
+            except EOFError:
+                print("\n[Non-interactive mode - continuing automatically]")
     
     def export_detailed_report(self):
         """Export comprehensive analysis report"""
@@ -602,7 +654,13 @@ class InteractiveResultExplorer:
             # ... continue for all sections
         
         print(f"Report exported successfully!")
-        input("\nPress Enter to continue...")
+        if hasattr(self, '_interactive_mode') and not self._interactive_mode:
+            print("\n[Non-interactive mode - continuing automatically]")
+        else:
+            try:
+                input("\nPress Enter to continue...")
+            except EOFError:
+                print("\n[Non-interactive mode - continuing automatically]")
     
     def load_different_backtest(self):
         """Load a different backtest result"""
@@ -707,7 +765,13 @@ class InteractiveResultExplorer:
             print(f"{trade['symbol']} - {trade['profit_pct']:.2%} - "
                   f"${trade.get('value', 0):,.2f} - {trade['timestamp']}")
         
-        input("\nPress Enter to continue...")
+        if hasattr(self, '_interactive_mode') and not self._interactive_mode:
+            print("\n[Non-interactive mode - continuing automatically]")
+        else:
+            try:
+                input("\nPress Enter to continue...")
+            except EOFError:
+                print("\n[Non-interactive mode - continuing automatically]")
     
     def _paginate_trades(self, trades_df, page_size=10):
         """Display trades with pagination"""
@@ -749,7 +813,13 @@ class InteractiveResultExplorer:
                 elif nav == 'q':
                     break
             else:
-                input("\nPress Enter to continue...")
+                if hasattr(self, '_interactive_mode') and not self._interactive_mode:
+                    print("\n[Non-interactive mode - continuing automatically]")
+                else:
+                    try:
+                        input("\nPress Enter to continue...")
+                    except EOFError:
+                        print("\n[Non-interactive mode - continuing automatically]")
                 break
 
 

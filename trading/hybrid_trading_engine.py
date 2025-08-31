@@ -306,3 +306,37 @@ class HybridTradingEngine:
 def create_hybrid_trading_engine(portfolio: FIFOPortfolio, custom_config: dict = None):
     """Create the hybrid day+swing trading engine"""
     return HybridTradingEngine(portfolio, custom_config)
+
+
+class LAEFBacktester:
+    """Backtesting wrapper for HybridTradingEngine"""
+    
+    def __init__(self, initial_cash=50000, custom_config=None):
+        self.initial_cash = initial_cash
+        self.custom_config = custom_config or {}
+        from core.portfolio_manager import FIFOPortfolio
+        self.portfolio = FIFOPortfolio()
+        self.engine = HybridTradingEngine(self.portfolio, custom_config)
+        self.results = {}
+    
+    def run_backtest(self, symbols=None, start_date=None, end_date=None, use_smart_selection=False, **kwargs):
+        """Run backtest using the enhanced trading engine"""
+        from trading.enhanced_backtest_engine import EnhancedBacktestEngine
+        
+        print(f"[LAEF BACKTEST] Initializing Enhanced Trading Engine")
+        
+        # Create enhanced engine with current configuration
+        enhanced_engine = EnhancedBacktestEngine(
+            initial_cash=self.initial_cash,
+            custom_config=self.custom_config
+        )
+        
+        # Run the enhanced backtest
+        results = enhanced_engine.run_backtest(
+            symbols=symbols,
+            start_date=start_date, 
+            end_date=end_date,
+            use_smart_selection=use_smart_selection
+        )
+        
+        return results

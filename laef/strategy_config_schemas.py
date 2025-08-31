@@ -1,6 +1,6 @@
 # === strategy_config_schemas.py - Centralized Strategy Configuration Schemas ===
 
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Tuple, Optional
 from dataclasses import dataclass, field
 from datetime import datetime
 import json

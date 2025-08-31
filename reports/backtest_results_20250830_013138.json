@@ -1,0 +1,26 @@
+{
+  "status": "completed",
+  "initial_cash": 100000,
+  "final_value": 99900.61817475893,
+  "total_return": -0.09938182524107106,
+  "symbols": [
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "TSLA",
+    "NVDA"
+  ],
+  "start_date": "2025-06-01",
+  "end_date": "2025-08-30",
+  "total_trades": 0,
+  "winning_trades": 0,
+  "losing_trades": 0,
+  "win_rate": 0,
+  "avg_profit": 0,
+  "avg_loss": 0,
+  "sharpe_ratio": 0.6453451480187429,
+  "total_decisions": 315,
+  "buy_signals": 167,
+  "sell_signals": 0,
+  "hold_signals": 148
+}

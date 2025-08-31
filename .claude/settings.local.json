@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(if [ -f \".env\" ])",
+      "Bash(then echo \".env file exists\")",
+      "Bash(else echo \".env file not found\")",
+      "Bash(fi)",
+      "Bash(python:*)",
+      "Bash(timeout:*)",
+      "Read(/C:\\Users\\jclif\\Downloads/**)",
+      "Bash(cat:*)",
+      "Bash(del validate_configurations.py test_config_integration.py)",
+      "Bash(dir:*)",
+      "Bash(if [ -d \"logs\" ])",
+      "Bash(then echo \"logs directory exists\")",
+      "Bash(else echo \"logs directory not found\")",
+      "Bash(if [ -d \"logs/training\" ])",
+      "Bash(then echo \"logs/training exists\")",
+      "Bash(else echo \"logs/training not found - creating it\")",
+      "Bash(mkdir:*)",
+      "Bash(if [ -d \"models\" ])",
+      "Bash(then echo \"models directory exists\")",
+      "Bash(else echo \"models directory not found\")",
+      "Bash(if [ -d \"models/q_learning_models\" ])",
+      "Bash(then echo \"q_learning_models exists\")",
+      "Bash(else echo \"q_learning_models not found - creating it\")",
+      "Bash(pip install:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "status": "completed",
+  "initial_cash": 10000,
+  "final_value": 9990.738369369508,
+  "total_return": -0.09261630630491709,
+  "symbols": [
+    "AAPL",
+    "MSFT",
+    "GOOGL"
+  ],
+  "start_date": "2025-07-31",
+  "end_date": "2025-08-30",
+  "total_trades": 0,
+  "winning_trades": 0,
+  "losing_trades": 0,
+  "win_rate": 0,
+  "avg_profit": 0,
+  "avg_loss": 0,
+  "sharpe_ratio": -2.5750366034597585,
+  "total_decisions": 66,
+  "buy_signals": 32,
+  "sell_signals": 0,
+  "hold_signals": 34,
+  "symbol_pnl": {},
+  "grand_total_pnl": 0
+}

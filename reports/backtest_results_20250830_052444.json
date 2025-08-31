@@ -1,0 +1,24 @@
+{
+  "status": "completed",
+  "initial_cash": 10000,
+  "final_value": 9993.539059997558,
+  "total_return": -0.06460940002441931,
+  "symbols": [
+    "AAPL"
+  ],
+  "start_date": "2025-08-25 05:24:44.221944",
+  "end_date": "2025-08-30 05:24:44.221944",
+  "total_trades": 0,
+  "winning_trades": 0,
+  "losing_trades": 0,
+  "win_rate": 0,
+  "avg_profit": 0,
+  "avg_loss": 0,
+  "sharpe_ratio": 4.014309343777399,
+  "total_decisions": 5,
+  "buy_signals": 4,
+  "sell_signals": 0,
+  "hold_signals": 1,
+  "symbol_pnl": {},
+  "grand_total_pnl": 0
+}

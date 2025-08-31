@@ -1,0 +1,436 @@
+{
+  "quick_backtest": {
+    "status": "completed",
+    "config": "Default LAEF Settings",
+    "results": {
+      "status": "completed",
+      "initial_cash": 50000,
+      "final_value": 49950.53265315248,
+      "total_return": -0.098934693695046,
+      "symbols": [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "TSLA",
+        "NVDA"
+      ],
+      "start_date": "2025-05-28",
+      "end_date": "2025-08-26",
+      "total_trades": 0,
+      "winning_trades": 0,
+      "losing_trades": 0,
+      "win_rate": 0,
+      "avg_profit": 0,
+      "avg_loss": 0,
+      "sharpe_ratio": 0.8305946798359819,
+      "total_decisions": 310,
+      "buy_signals": 150,
+      "sell_signals": 0,
+      "hold_signals": 160
+    },
+    "timestamp": "2025-08-26T04:57:21.936405"
+  },
+  "advanced_backtests": [
+    {
+      "name": "Conservative Strategy",
+      "status": "completed",
+      "config": {
+        "name": "Conservative Strategy",
+        "initial_cash": 25000,
+        "start_date": "2024-08-01",
+        "end_date": "2024-10-31",
+        "q_buy": 0.75,
+        "q_sell": 0.25,
+        "risk_per_trade": 0.01,
+        "max_position_size": 0.05,
+        "rsi_oversold": 25,
+        "rsi_overbought": 75
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 25000,
+        "final_value": 24975.532987106326,
+        "total_return": -0.09786805157469644,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "win_rate": 0,
+        "avg_profit": 0,
+        "avg_loss": 0,
+        "sharpe_ratio": 0.20414427758860396,
+        "total_decisions": 310,
+        "buy_signals": 156,
+        "sell_signals": 0,
+        "hold_signals": 154
+      },
+      "timestamp": "2025-08-26T04:57:22.203101"
+    },
+    {
+      "name": "Aggressive Day Trading",
+      "status": "completed",
+      "config": {
+        "name": "Aggressive Day Trading",
+        "initial_cash": 100000,
+        "start_date": "2024-07-01",
+        "end_date": "2024-09-30",
+        "q_buy": 0.45,
+        "q_sell": 0.2,
+        "risk_per_trade": 0.08,
+        "max_position_size": 0.25,
+        "rsi_oversold": 20,
+        "rsi_overbought": 80
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 100000,
+        "final_value": 99900.62859172058,
+        "total_return": -0.09937140827941766,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "win_rate": 0,
+        "avg_profit": 0,
+        "avg_loss": 0,
+        "sharpe_ratio": 1.2895663181750936,
+        "total_decisions": 310,
+        "buy_signals": 150,
+        "sell_signals": 0,
+        "hold_signals": 160
+      },
+      "timestamp": "2025-08-26T04:57:22.448741"
+    },
+    {
+      "name": "Balanced Swing Trading",
+      "status": "completed",
+      "config": {
+        "name": "Balanced Swing Trading",
+        "initial_cash": 75000,
+        "start_date": "2024-06-01",
+        "end_date": "2024-08-31",
+        "q_buy": 0.55,
+        "q_sell": 0.3,
+        "risk_per_trade": 0.03,
+        "max_position_size": 0.15,
+        "rsi_oversold": 30,
+        "rsi_overbought": 70
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 75000,
+        "final_value": 74925.59451191714,
+        "total_return": -0.09920731744381676,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "win_rate": 0,
+        "avg_profit": 0,
+        "avg_loss": 0,
+        "sharpe_ratio": 0.3774649629265809,
+        "total_decisions": 310,
+        "buy_signals": 151,
+        "sell_signals": 0,
+        "hold_signals": 159
+      },
+      "timestamp": "2025-08-26T04:57:22.687705"
+    },
+    {
+      "name": "High-Frequency Scalping",
+      "status": "completed",
+      "config": {
+        "name": "High-Frequency Scalping",
+        "initial_cash": 50000,
+        "start_date": "2024-09-01",
+        "end_date": "2024-11-30",
+        "q_buy": 0.4,
+        "q_sell": 0.15,
+        "risk_per_trade": 0.05,
+        "max_position_size": 0.2,
+        "rsi_oversold": 35,
+        "rsi_overbought": 65
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "final_value": 49950.57570710756,
+        "total_return": -0.0988485857848864,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "win_rate": 0,
+        "avg_profit": 0,
+        "avg_loss": 0,
+        "sharpe_ratio": 0.06458467463620071,
+        "total_decisions": 310,
+        "buy_signals": 156,
+        "sell_signals": 0,
+        "hold_signals": 154
+      },
+      "timestamp": "2025-08-26T04:57:23.104096"
+    }
+  ],
+  "strategy_comparison": [
+    {
+      "strategy": "Momentum Scalping",
+      "status": "completed",
+      "config": {
+        "initial_cash": 50000,
+        "start_date": "2024-07-01",
+        "end_date": "2024-09-30",
+        "q_buy": 0.4,
+        "q_sell": 0.2,
+        "strategy_focus": "momentum"
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "final_value": 49950.508407348636,
+        "total_return": -0.09898318530272808,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "win_rate": 0,
+        "avg_profit": 0,
+        "avg_loss": 0,
+        "sharpe_ratio": -1.0742477573148812,
+        "total_decisions": 310,
+        "buy_signals": 152,
+        "sell_signals": 0,
+        "hold_signals": 158
+      },
+      "timestamp": "2025-08-26T04:57:23.343876"
+    },
+    {
+      "strategy": "Mean Reversion",
+      "status": "completed",
+      "config": {
+        "initial_cash": 50000,
+        "start_date": "2024-07-01",
+        "end_date": "2024-09-30",
+        "q_buy": 0.7,
+        "q_sell": 0.4,
+        "strategy_focus": "reversion"
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "final_value": 49950.567470886235,
+        "total_return": -0.09886505822752953,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "win_rate": 0,
+        "avg_profit": 0,
+        "avg_loss": 0,
+        "sharpe_ratio": 0.8121197654978738,
+        "total_decisions": 310,
+        "buy_signals": 154,
+        "sell_signals": 0,
+        "hold_signals": 156
+      },
+      "timestamp": "2025-08-26T04:57:23.583617"
+    },
+    {
+      "strategy": "Statistical Arbitrage",
+      "status": "completed",
+      "config": {
+        "initial_cash": 50000,
+        "start_date": "2024-07-01",
+        "end_date": "2024-09-30",
+        "q_buy": 0.6,
+        "q_sell": 0.35,
+        "strategy_focus": "statistical"
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "final_value": 49950.61523851014,
+        "total_return": -0.09876952297972458,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "win_rate": 0,
+        "avg_profit": 0,
+        "avg_loss": 0,
+        "sharpe_ratio": 0.7563602716886808,
+        "total_decisions": 310,
+        "buy_signals": 152,
+        "sell_signals": 0,
+        "hold_signals": 158
+      },
+      "timestamp": "2025-08-26T04:57:23.854835"
+    },
+    {
+      "strategy": "Dual Model Swing",
+      "status": "completed",
+      "config": {
+        "initial_cash": 50000,
+        "start_date": "2024-07-01",
+        "end_date": "2024-09-30",
+        "q_buy": 0.55,
+        "q_sell": 0.3,
+        "strategy_focus": "swing"
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "final_value": 49950.60153977967,
+        "total_return": -0.09879692044065451,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "win_rate": 0,
+        "avg_profit": 0,
+        "avg_loss": 0,
+        "sharpe_ratio": 1.2178564532068328,
+        "total_decisions": 310,
+        "buy_signals": 155,
+        "sell_signals": 0,
+        "hold_signals": 155
+      },
+      "timestamp": "2025-08-26T04:57:24.332727"
+    },
+    {
+      "strategy": "Pattern Recognition",
+      "status": "completed",
+      "config": {
+        "initial_cash": 50000,
+        "start_date": "2024-07-01",
+        "end_date": "2024-09-30",
+        "q_buy": 0.65,
+        "q_sell": 0.25,
+        "strategy_focus": "pattern"
+      },
+      "results": {
+        "status": "completed",
+        "initial_cash": 50000,
+        "final_value": 49950.57260261537,
+        "total_return": -0.09885479476925685,
+        "symbols": [
+          "AAPL",
+          "MSFT",
+          "GOOGL",
+          "TSLA",
+          "NVDA"
+        ],
+        "start_date": "2025-05-28",
+        "end_date": "2025-08-26",
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "win_rate": 0,
+        "avg_profit": 0,
+        "avg_loss": 0,
+        "sharpe_ratio": 1.2073012068232916,
+        "total_decisions": 310,
+        "buy_signals": 150,
+        "sell_signals": 0,
+        "hold_signals": 160
+      },
+      "timestamp": "2025-08-26T04:57:24.569963"
+    }
+  ],
+  "previous_results_analysis": {
+    "status": "completed",
+    "analysis": {
+      "total_result_files": 14,
+      "total_trade_files": 12,
+      "total_decision_files": 5,
+      "file_analysis": [
+        {
+          "file": "backtest_results_20250826_045722.json",
+          "final_value": 74925.59451191714,
+          "total_return": -0.09920731744381676,
+          "total_trades": 0,
+          "win_rate": 0
+        },
+        {
+          "file": "backtest_results_20250826_045723.json",
+          "final_value": 49950.61523851014,
+          "total_return": -0.09876952297972458,
+          "total_trades": 0,
+          "win_rate": 0
+        },
+        {
+          "file": "backtest_results_20250826_045724.json",
+          "final_value": 49950.57260261537,
+          "total_return": -0.09885479476925685,
+          "total_trades": 0,
+          "win_rate": 0
+        }
+      ]
+    },
+    "timestamp": "2025-08-26T04:57:24.608473"
+  }
+}

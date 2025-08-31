@@ -1,0 +1,12 @@
+{
+  "initial_capital": 10000,
+  "final_value": 11249.490867614746,
+  "total_return": 12.49490867614746,
+  "total_trades": 156,
+  "winning_trades": 91,
+  "losing_trades": 65,
+  "win_rate": 58.333333333333336,
+  "avg_win": 38.585328741388004,
+  "avg_loss": -34.79652381310096,
+  "total_profit": 1249.490867614746
+}

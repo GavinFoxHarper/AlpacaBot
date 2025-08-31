@@ -1,0 +1,48 @@
+{
+    "name": "Aggressive",
+    "description": "High risk, high reward",
+    "PAPER_TRADING": true,
+    "MAX_POSITIONS": 15,
+    "MAX_POSITION_SIZE": 2000,
+    "STOP_LOSS_PERCENT": 3.0,
+    "TAKE_PROFIT_PERCENT": 8.0,
+    "TIMEFRAME": "1Min",
+    "STRATEGIES": {
+        "momentum_scalping": {
+            "enabled": true,
+            "weight": 0.3
+        },
+        "pattern_recognition": {
+            "enabled": true,
+            "weight": 0.2
+        },
+        "news_sentiment": {
+            "enabled": true,
+            "weight": 0.2
+        },
+        "hybrid_adaptive": {
+            "enabled": true,
+            "weight": 0.15
+        },
+        "reinforced_grid": {
+            "enabled": true,
+            "weight": 0.15
+        },
+        "mean_reversion": {
+            "enabled": false,
+            "weight": 0.0
+        },
+        "statistical_arbitrage": {
+            "enabled": false,
+            "weight": 0.0
+        },
+        "dual_model_swing": {
+            "enabled": false,
+            "weight": 0.0
+        },
+        "time_based": {
+            "enabled": false,
+            "weight": 0.0
+        }
+    }
+}

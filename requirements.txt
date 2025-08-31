@@ -1,0 +1,57 @@
+# Core dependencies
+alpaca-trade-api>=3.1.0
+alpaca-py>=0.10.0
+python-dotenv>=1.0.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+yfinance>=0.2.18
+openpyxl>=3.1.0
+
+# Technical analysis
+ta>=0.10.2
+ta-lib>=0.4.25
+scipy>=1.10.0
+
+# Machine Learning
+scikit-learn>=1.3.0
+tensorflow>=2.13.0
+keras>=2.13.0
+torch>=2.0.0
+xgboost>=1.7.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.14.0
+
+# API and Web
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+aiohttp>=3.8.0
+
+# News Sentiment
+vaderSentiment>=3.3.2
+textblob>=0.17.0
+newsapi-python>=0.2.6
+
+# Utilities
+tqdm>=4.65.0
+colorama>=0.4.6
+schedule>=1.2.0
+pytz>=2023.3
+
+# Development
+pytest>=7.4.0
+black>=23.7.0
+pylint>=2.17.0
+jupyter>=1.0.0
+
+# Database
+sqlalchemy>=2.0.0
+redis>=4.6.0
+
+# Logging
+loguru>=0.7.0

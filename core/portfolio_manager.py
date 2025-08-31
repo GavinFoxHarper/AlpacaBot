@@ -41,6 +41,7 @@ class FIFOPortfolio:
         # Trade logging
         self.trade_log = []
         self.trade_counter = 0
+        self.symbol_pnl = {}  # Track P&L by symbol for reporting
         
         # Performance tracking
         self.total_realized_pnl = 0.0
@@ -241,7 +242,7 @@ class FIFOPortfolio:
             # Update cash
             self.cash -= total_cost
             
-            # Log the trade
+            # Log the trade with enhanced information
             self._log_trade({
                 'timestamp': timestamp,
                 'symbol': symbol,
@@ -250,7 +251,10 @@ class FIFOPortfolio:
                 'price': price,
                 'total_cost': total_cost,
                 'entry_id': position.entry_id,
-                'remaining_cash': self.cash
+                'remaining_cash': self.cash,
+                'reason': 'Opening new position - algorithm detected strong buying opportunity',
+                'pnl': 0,  # No P&L on buys
+                'pnl_pct': 0
             })
             
             logging.info(f"[PORTFOLIO] BUY: {quantity} shares of {symbol} @ ${price:.2f} (Cost: ${total_cost:.2f})")
@@ -347,20 +351,53 @@ class FIFOPortfolio:
             if total_realized_pnl > 0:
                 self.winning_trades += len(positions_sold)
             
-            # Log each individual sale
+            # Update symbol P&L tracking
+            if symbol not in self.symbol_pnl:
+                self.symbol_pnl[symbol] = {'total_pnl': 0, 'trades': 0, 'wins': 0, 'losses': 0}
+            
+            self.symbol_pnl[symbol]['total_pnl'] += total_realized_pnl
+            self.symbol_pnl[symbol]['trades'] += 1
+            if total_realized_pnl > 0:
+                self.symbol_pnl[symbol]['wins'] += 1
+            else:
+                self.symbol_pnl[symbol]['losses'] += 1
+            
+            # Log each individual sale with enhanced info
             for sale in positions_sold:
+                pnl_pct = (sale['pnl'] / (sale['shares_sold'] * sale['entry_price']) * 100) if sale['entry_price'] > 0 else 0
+                
+                # Generate layman's terms reason
+                if sale['pnl'] > 0:
+                    if pnl_pct > 5:
+                        reason = f"Taking profits - secured {pnl_pct:.1f}% gain on this batch"
+                    else:
+                        reason = f"Small profit exit - {pnl_pct:.1f}% gain on this batch"
+                elif sale['pnl'] < 0:
+                    if pnl_pct < -5:
+                        reason = f"Stop loss triggered - limiting losses at {pnl_pct:.1f}%"
+                    else:
+                        reason = f"Minor loss exit - {pnl_pct:.1f}% loss on this batch"
+                else:
+                    reason = "Break-even exit"
+                
+                if force_sell:
+                    reason = "Risk management exit - algorithm signaled to close position"
+                
                 self._log_trade({
                     'timestamp': timestamp,
                     'symbol': symbol,
                     'action': 'SELL',
                     'quantity': sale['shares_sold'],
-                    'price': price,
+                    'buy_price': sale['entry_price'],
+                    'sell_price': price,
                     'total_proceeds': sale['shares_sold'] * price,
                     'entry_id': sale['entry_id'],
-                    'entry_price': sale['entry_price'],
                     'entry_time': sale['entry_time'],
                     'pnl': sale['pnl'],
-                    'remaining_cash': self.cash
+                    'pnl_pct': pnl_pct,
+                    'reason': reason,
+                    'remaining_cash': self.cash,
+                    'cumulative_symbol_pnl': self.symbol_pnl[symbol]['total_pnl']
                 })
             
             # Clean up empty position queue
@@ -420,7 +457,7 @@ class FIFOPortfolio:
         self.trade_log.append(trade_data)
     
     def save_trade_log(self, filename: str = None):
-        """Save trade log to CSV file."""
+        """Save enhanced trade log with P&L summary to CSV file."""
         try:
             filename = filename or TRADE_LOG_FILE
             
@@ -428,9 +465,65 @@ class FIFOPortfolio:
                 logging.info("[PORTFOLIO] No trades to save")
                 return
             
+            # Save detailed trade log
             df = pd.DataFrame(self.trade_log)
+            
+            # Add running total P&L column
+            running_pnl = 0
+            df['running_total_pnl'] = 0
+            for idx, row in df.iterrows():
+                if row['action'] == 'SELL' and 'pnl' in row:
+                    running_pnl += row['pnl']
+                df.at[idx, 'running_total_pnl'] = running_pnl
+            
             df.to_csv(filename, index=False)
             logging.info(f"[PORTFOLIO] Saved {len(self.trade_log)} trades to {filename}")
+            
+            # Save P&L summary by symbol
+            if self.symbol_pnl:
+                summary_filename = filename.replace('.csv', '_pnl_summary.csv')
+                pnl_summary = []
+                grand_total_pnl = 0
+                
+                for symbol, data in self.symbol_pnl.items():
+                    win_rate = (data['wins'] / data['trades'] * 100) if data['trades'] > 0 else 0
+                    pnl_summary.append({
+                        'symbol': symbol,
+                        'total_trades': data['trades'],
+                        'winning_trades': data['wins'],
+                        'losing_trades': data['losses'],
+                        'win_rate': f"{win_rate:.1f}%",
+                        'total_pnl': data['total_pnl'],
+                        'avg_pnl_per_trade': data['total_pnl'] / data['trades'] if data['trades'] > 0 else 0
+                    })
+                    grand_total_pnl += data['total_pnl']
+                
+                # Add grand total row
+                total_trades = sum(d['trades'] for d in self.symbol_pnl.values())
+                total_wins = sum(d['wins'] for d in self.symbol_pnl.values())
+                pnl_summary.append({
+                    'symbol': 'GRAND TOTAL',
+                    'total_trades': total_trades,
+                    'winning_trades': total_wins,
+                    'losing_trades': sum(d['losses'] for d in self.symbol_pnl.values()),
+                    'win_rate': f"{(total_wins / total_trades * 100):.1f}%" if total_trades > 0 else "0%",
+                    'total_pnl': grand_total_pnl,
+                    'avg_pnl_per_trade': grand_total_pnl / total_trades if total_trades > 0 else 0
+                })
+                
+                pnl_df = pd.DataFrame(pnl_summary)
+                pnl_df.to_csv(summary_filename, index=False)
+                logging.info(f"[PORTFOLIO] Saved P&L summary to {summary_filename}")
+                
+                # Print summary to console
+                print("\n" + "="*60)
+                print("TRADING SESSION P&L SUMMARY")
+                print("="*60)
+                for row in pnl_summary:
+                    if row['symbol'] == 'GRAND TOTAL':
+                        print("-"*60)
+                    print(f"{row['symbol']:<12} | Trades: {row['total_trades']:>3} | Win Rate: {row['win_rate']:>6} | P&L: ${row['total_pnl']:>10.2f}")
+                print("="*60 + "\n")
             
         except Exception as e:
             logging.error(f"[PORTFOLIO] Failed to save trade log: {e}")
