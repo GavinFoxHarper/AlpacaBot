@@ -1,0 +1,52 @@
+{
+  "summary": {
+    "total": 10,
+    "passed": 6,
+    "failed": 4,
+    "errors": 0,
+    "success_rate": 60.0,
+    "duration": "0:00:53.738005"
+  },
+  "results": {
+    "Data Pipeline": {
+      "status": "PASSED",
+      "details": {}
+    },
+    "Reward System": {
+      "status": "PASSED",
+      "details": {}
+    },
+    "Enhanced Q-Agent": {
+      "status": "PASSED",
+      "details": {}
+    },
+    "Comprehensive Training": {
+      "status": "FAILED",
+      "details": {}
+    },
+    "Experience Buffer": {
+      "status": "PASSED",
+      "details": {}
+    },
+    "Adaptive Agent": {
+      "status": "FAILED",
+      "details": {}
+    },
+    "Validation Framework": {
+      "status": "FAILED",
+      "details": {}
+    },
+    "Configuration System": {
+      "status": "PASSED",
+      "details": {}
+    },
+    "Training Metrics": {
+      "status": "PASSED",
+      "details": {}
+    },
+    "Integration Test": {
+      "status": "FAILED",
+      "details": {}
+    }
+  }
+}

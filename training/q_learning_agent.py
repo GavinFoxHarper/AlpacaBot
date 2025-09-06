@@ -1,8 +1,11 @@
-# === agent_unified.py - Standardized Agent Implementation ===
+# === Enhanced Q-Learning Agent with Fixed Reward Structure ===
 
 import os
 import numpy as np
 import logging
+from typing import Dict, List, Tuple, Optional, Any
+import json
+from collections import deque, defaultdict
 
 # PERFORMANCE OPTIMIZATION: Configure TensorFlow before importing
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Suppress TF info messages
@@ -15,10 +18,39 @@ tf.config.threading.set_inter_op_parallelism_threads(2)
 tf.config.threading.set_intra_op_parallelism_threads(2)
 
 from tensorflow.keras.models import Sequential, load_model
-from tensorflow.keras.layers import Dense, Input, Dropout
+from tensorflow.keras.layers import Dense, Input, Dropout, BatchNormalization
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import MeanSquaredError
-from config import STATE_SIZE, LEARNING_RATE, MODEL_PATH
+from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
+
+try:
+    from config import STATE_SIZE, LEARNING_RATE, MODEL_PATH
+except ImportError:
+    # Default values if config not available
+    STATE_SIZE = 15
+    LEARNING_RATE = 0.001
+    MODEL_PATH = 'models/q_agent.h5'
+
+# Import enhanced reward system
+try:
+    from training.enhanced_reward_system import EnhancedRewardSystem, MarketRegime, Action
+except ImportError:
+    # Mock classes if enhanced reward system not available
+    class EnhancedRewardSystem:
+        def calculate_enhanced_reward(self, *args, **kwargs):
+            return type('obj', (object,), {'total_reward': 0.0})
+        def get_reward_statistics(self):
+            return {}
+    
+    class MarketRegime:
+        BULL = 'bull'
+        BEAR = 'bear'
+        NORMAL = 'normal'
+    
+    class Action:
+        HOLD = 0
+        BUY = 1
+        SELL = 2
 
 class LAEFAgent:
     """

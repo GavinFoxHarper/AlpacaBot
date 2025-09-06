@@ -7,7 +7,11 @@
       "Bash(git push:*)",
       "Read(C:\\Users\\jclif\\AlpacaBot/**)",
       "Bash(rm:*)",
-      "Bash(del nul)"
+      "Bash(del nul)",
+      "Bash(pip uninstall:*)",
+      "Read(C:\\Users\\jclif\\Downloads/**)",
+      "Bash(mkdir:*)",
+      "Bash(python:*)"
     ],
     "deny": [],
     "ask": []

@@ -20,8 +20,21 @@ import logging
 sys.path.insert(0, str(Path(__file__).parent))
 
 from dotenv import load_dotenv
-from alpaca_trade_api import REST
-from config import LOGS_DIR, MODELS_DIR, REPORTS_DIR
+
+# Try importing from config.py directly (it's in parent directory)
+try:
+    from config import LOGS_DIR, MODELS_DIR, REPORTS_DIR
+except ImportError:
+    # If that fails, define them manually
+    BASE_DIR = Path(__file__).parent
+    LOGS_DIR = BASE_DIR / 'logs'
+    MODELS_DIR = BASE_DIR / 'models'
+    REPORTS_DIR = BASE_DIR / 'reports'
+
+try:
+    from alpaca_trade_api import REST
+except ImportError:
+    REST = None
 
 # Load environment
 load_dotenv()
