@@ -272,9 +272,17 @@ class EnhancedBacktestEngine:
                 return
             cost = shares * price * 1.001
         
-        # Execute buy
+        # Execute buy through the FIFOPortfolio
+        success = self.portfolio.buy(symbol, price, shares, timestamp=date)
+        
+        if not success:
+            logger.warning(f"Buy failed for {symbol}")
+            return
+        
+        # Deduct cost from our cash tracking
         self.cash -= cost
         
+        # Update our local position tracking
         if symbol in self.positions:
             # Average up
             existing_shares = self.positions[symbol]['shares']
@@ -313,6 +321,13 @@ class EnhancedBacktestEngine:
         shares = self.positions[symbol]['shares']
         avg_price = self.positions[symbol]['avg_price']
         
+        # Execute sell through the FIFOPortfolio
+        success, realized_pnl, message = self.portfolio.sell(symbol, price, shares, timestamp=date)
+        
+        if not success:
+            logger.warning(f"Sell failed: {message}")
+            return
+        
         # Calculate proceeds with slippage
         proceeds = shares * price * 0.999  # 0.1% slippage
         
@@ -321,7 +336,7 @@ class EnhancedBacktestEngine:
         pnl = proceeds - cost_basis
         pnl_pct = (pnl / cost_basis) * 100
         
-        # Execute sell
+        # Update our cash tracking
         self.cash += proceeds
         
         # Update running P&L for this symbol

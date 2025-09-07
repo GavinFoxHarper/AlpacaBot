@@ -8,6 +8,12 @@ from collections import deque
 from dataclasses import dataclass
 from typing import List, Dict, Optional, Tuple
 import os
+import sys
+# Add parent directory to path
+parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, parent_dir)
+
+# Now we can import from config.py directly since there's no folder conflict
 from config import INITIAL_CASH, MAX_RISK_PER_TRADE, MAX_POSITION_SIZE, TRADE_LOG_FILE
 
 @dataclass

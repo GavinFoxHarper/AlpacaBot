@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "initial_cash": 100000,
+  "final_value": 99900.69344018557,
+  "total_return": -0.09930655981443123,
+  "symbols": [
+    "AAPL",
+    "SPY",
+    "GOOGL",
+    "NVDA",
+    "TSLA"
+  ],
+  "start_date": "2025-06-08",
+  "end_date": "2025-09-06",
+  "total_trades": 0,
+  "winning_trades": 0,
+  "losing_trades": 0,
+  "win_rate": 0,
+  "avg_profit": 0,
+  "avg_loss": 0,
+  "sharpe_ratio": 0.35758963269987115,
+  "total_decisions": 310,
+  "buy_signals": 188,
+  "sell_signals": 0,
+  "hold_signals": 122,
+  "symbol_pnl": {},
+  "grand_total_pnl": 0
+}

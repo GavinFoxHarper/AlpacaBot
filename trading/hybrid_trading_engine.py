@@ -19,20 +19,20 @@ class HybridTradingEngine:
     def __init__(self, portfolio: FIFOPortfolio, custom_config: dict = None):
         self.portfolio = portfolio
         
-        # AGGRESSIVE DEFAULT SETTINGS
+        # ADJUSTED SETTINGS FOR ACTUAL TRADING
         self.thresholds = {
-            'q_buy': 0.40,                    # Aggressive entry
-            'q_sell': 0.20,                   # Quick exit
-            'ml_profit_peak': 0.40,           # Fast profit detection
-            'day_trade_profit': 0.015,        # 1.5% day trade target
-            'swing_trade_profit': 0.04,       # 4% swing trade target
-            'stop_loss_pct': 0.93,            # 7% stop loss
-            'momentum_threshold': 0.02,        # 2% momentum
-            'rsi_oversold': 20,               # Aggressive oversold
-            'rsi_overbought': 80,             # Less restrictive
-            'max_risk_per_trade': 0.08,       # 8% risk
-            'max_position_size': 0.25,        # 25% position
-            'max_hold_hours': 168,            # 7 days max
+            'q_buy': 0.30,                    # Lowered from 0.40
+            'q_sell': 0.35,                   # Raised from 0.20 - must be higher than q_buy
+            'ml_profit_peak': 0.25,           # Lowered from 0.40 - more realistic
+            'day_trade_profit': 0.005,        # 0.5% instead of 1.5% - achievable daily
+            'swing_trade_profit': 0.015,      # 1.5% instead of 4% - realistic swing
+            'stop_loss_pct': 0.98,            # 2% stop loss instead of 7%
+            'momentum_threshold': 0.01,        # 1% momentum instead of 2%
+            'rsi_oversold': 35,               # Less aggressive oversold
+            'rsi_overbought': 65,             # More restrictive
+            'max_risk_per_trade': 0.05,       # 5% risk instead of 8%
+            'max_position_size': 0.15,        # 15% position instead of 25%
+            'max_hold_hours': 48,             # 2 days max for backtesting
         }
         
         # Apply custom config
@@ -154,6 +154,17 @@ class HybridTradingEngine:
         if force_sell:
             sell_data = self._calculate_sell_data(symbol, current_price, position_info)
             return 'sell', 0.9, "FORCE SELL", sell_data
+        
+        # PRIORITY 0: Force exit after max hold time (backtesting safety)
+        if hold_hours >= self.thresholds.get('max_hold_hours', 48):
+            sell_data = self._calculate_sell_data(symbol, current_price, position_info)
+            reason = f"FORCED EXIT: Held for {hold_hours:.1f} hours (max: {self.thresholds['max_hold_hours']})"
+            logging.warning(f"{symbol}: {reason}")
+            
+            if symbol in self.position_entry_times:
+                del self.position_entry_times[symbol]
+            
+            return 'sell', 1.0, reason, sell_data
         
         # PRIORITY 1: Stop Loss (Universal)
         loss_pct = abs(position_info['unrealized_pnl_pct'])

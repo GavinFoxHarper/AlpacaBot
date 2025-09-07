@@ -1,0 +1,31 @@
+{
+  "status": "completed",
+  "initial_cash": 10000,
+  "final_value": 9961.20898428345,
+  "total_return": -0.38791015716549737,
+  "symbols": [
+    "AAPL"
+  ],
+  "start_date": "2024-01-01",
+  "end_date": "2024-02-29",
+  "total_trades": 17,
+  "winning_trades": 8,
+  "losing_trades": 9,
+  "win_rate": 47.05882352941176,
+  "avg_profit": 21.15352150726312,
+  "avg_loss": -18.298102410210504,
+  "sharpe_ratio": 3.2533788593692248,
+  "total_decisions": 40,
+  "buy_signals": 18,
+  "sell_signals": 17,
+  "hold_signals": 5,
+  "symbol_pnl": {
+    "AAPL": {
+      "total_pnl": 4.545250366210439,
+      "trades": 17,
+      "wins": 8,
+      "losses": 9
+    }
+  },
+  "grand_total_pnl": 4.545250366210439
+}

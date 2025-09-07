@@ -40,7 +40,15 @@
       "Bash(pip cache:*)",
       "Bash(git add:*)",
       "Bash(del nul)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Read(C:\\Users\\jclif\\AlpacaBot\\trading/**)",
+      "Read(C:\\Users\\jclif\\AlpacaBot\\core/**)",
+      "Read(C:\\Users\\jclif\\AlpacaBot/**)",
+      "Read(C:\\Users\\jclif\\AlpacaBot/**)",
+      "Read(C:\\Users\\jclif\\AlpacaBot\\config/**)",
+      "Read(C:\\Users\\jclif\\Downloads/**)"
     ],
     "deny": [],
     "ask": []
