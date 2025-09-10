@@ -6,17 +6,16 @@ from typing import Dict, Tuple, Any
 from laef.base_strategy import BaseStrategy
 from core.portfolio_manager import FIFOPortfolio
 
-# Import existing engines
-from trading.unified_trading_engine import UnifiedTradingEngine as DualModelTradingEngine
-from trading.hybrid_trading_engine import HybridTradingEngine
-from laef.momentum_scalping_engine import MomentumScalpingEngine
-from laef.laef_ai_trading_engine import LAEFAITradingEngine as AIMomentumScalpingEngine
+# Import existing engines - deferred to avoid circular imports
+# These will be imported inside the functions that need them
 
 class DualModelStrategyAdapter(BaseStrategy):
     """Adapter for DualModelTradingEngine to comply with BaseStrategy interface"""
     
     def __init__(self, portfolio: FIFOPortfolio, config: Dict[str, Any]):
         super().__init__(portfolio, config)
+        # Import here to avoid circular dependency
+        from trading.unified_trading_engine import UnifiedTradingEngine as DualModelTradingEngine
         self.engine = DualModelTradingEngine(portfolio, custom_config=config)
         self.last_trade_time = {}
     
@@ -84,6 +83,8 @@ class HybridTradingStrategyAdapter(BaseStrategy):
     
     def __init__(self, portfolio: FIFOPortfolio, config: Dict[str, Any]):
         super().__init__(portfolio, config)
+        # Import here to avoid circular dependency
+        from trading.hybrid_trading_engine import HybridTradingEngine
         self.engine = HybridTradingEngine(portfolio, custom_config=config)
         self.last_trade_time = {}
     
@@ -151,6 +152,8 @@ class MomentumScalpingStrategyAdapter(BaseStrategy):
     
     def __init__(self, portfolio: FIFOPortfolio, config: Dict[str, Any]):
         super().__init__(portfolio, config)
+        # Import here to avoid circular dependency
+        from laef.momentum_scalping_engine import MomentumScalpingEngine
         self.engine = MomentumScalpingEngine(portfolio, custom_config=config)
         self.last_trade_time = {}
     
@@ -215,6 +218,8 @@ class AIMomentumScalpingStrategyAdapter(BaseStrategy):
     
     def __init__(self, portfolio: FIFOPortfolio, config: Dict[str, Any]):
         super().__init__(portfolio, config)
+        # Import here to avoid circular dependency
+        from laef.laef_ai_trading_engine import LAEFAITradingEngine as AIMomentumScalpingEngine
         self.engine = AIMomentumScalpingEngine(portfolio, custom_config=config)
         self.last_trade_time = {}
     

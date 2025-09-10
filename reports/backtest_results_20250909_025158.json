@@ -1,0 +1,59 @@
+{
+  "status": "completed",
+  "initial_cash": 100000,
+  "final_value": 100868.75144290176,
+  "total_return": 0.868751442901761,
+  "symbols": [
+    "TSLA",
+    "NVDA",
+    "GOOGL",
+    "SPY",
+    "META"
+  ],
+  "start_date": "2025-06-11",
+  "end_date": "2025-09-09",
+  "total_trades": 131,
+  "winning_trades": 77,
+  "losing_trades": 54,
+  "win_rate": 58.778625954198475,
+  "avg_profit": 75.90968096686025,
+  "avg_loss": -80.37358817093461,
+  "sharpe_ratio": 1.4351943348929295,
+  "total_decisions": 305,
+  "buy_signals": 133,
+  "sell_signals": 131,
+  "hold_signals": 41,
+  "symbol_pnl": {
+    "TSLA": {
+      "total_pnl": 213.88653625488132,
+      "trades": 25,
+      "wins": 15,
+      "losses": 10
+    },
+    "NVDA": {
+      "total_pnl": 956.3769017639161,
+      "trades": 28,
+      "wins": 20,
+      "losses": 8
+    },
+    "GOOGL": {
+      "total_pnl": 792.425946258546,
+      "trades": 27,
+      "wins": 18,
+      "losses": 9
+    },
+    "META": {
+      "total_pnl": -372.27662634277385,
+      "trades": 25,
+      "wins": 9,
+      "losses": 16
+    },
+    "SPY": {
+      "total_pnl": -85.54108471679865,
+      "trades": 26,
+      "wins": 15,
+      "losses": 11
+    }
+  },
+  "grand_total_pnl": 1504.8716732177709
+}

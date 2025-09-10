@@ -23,11 +23,10 @@ from typing import Dict, List, Optional
 sys.path.insert(0, str(Path(__file__).parent))
 
 from dotenv import load_dotenv
+load_dotenv()  # Load environment first
+
 from alpaca_trade_api import REST
 from config import *
-
-# Load environment
-load_dotenv()
 
 class AutomatedDailyTrader:
     """Automated daily trading with learning and reporting"""

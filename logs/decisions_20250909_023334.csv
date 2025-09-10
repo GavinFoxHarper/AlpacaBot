@@ -1,0 +1,6 @@
+date,symbol,price,decision,confidence,reason,technical_reason,q_value,ml_confidence,rsi,macd
+2025-01-02 00:00:00-05:00,AAPL,242.9874267578125,buy,0.41951608476243407,Strong upward momentum detected. Algorithm confidence: 40%. Good entry point for potential gains.,BUY: Momentum entry Q=0.399 >= 0.3,0.3987054972244132,0.46807412235114965,50,0.0
+2025-01-03 00:00:00-05:00,AAPL,242.49916076660156,sell,0.8,Algorithm confidence dropped. Exiting position to preserve capital.,SELL: Conviction lost Q=0.226 <= 0.35,0.22565008548586019,0.6841015595973452,50,-0.03894999360085194
+2025-01-06 00:00:00-05:00,AAPL,244.1333465576172,buy,0.5412122255782923,Strong upward momentum detected. Algorithm confidence: 52%. Good entry point for potential gains.,BUY: Momentum entry Q=0.524 >= 0.3,0.5238216648163025,0.5817902006896016,50,0.06133990350059548
+2025-01-07 00:00:00-05:00,AAPL,241.3532257080078,sell,0.8,Algorithm confidence dropped. Exiting position to preserve capital.,SELL: Conviction lost Q=0.314 <= 0.35,0.3136020259311591,0.508290800802515,50,-0.08256044322354228
+2025-01-08 00:00:00-05:00,AAPL,241.8414764404297,buy,0.4273083182984728,Strong upward momentum detected. Algorithm confidence: 41%. Good entry point for potential gains.,BUY: Momentum entry Q=0.414 >= 0.3,0.41389187149779755,0.4586133608333819,50,-0.15541324398833467

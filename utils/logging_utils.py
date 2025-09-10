@@ -1,6 +1,7 @@
 """
 Log Management Utility for LAEF Trading System
 Helps manage large log files by providing analysis, cleanup, and rotation options
+Includes structured JSON logging, trace IDs, and performance metrics
 """
 
 import os
@@ -8,6 +9,80 @@ import shutil
 from datetime import datetime, timedelta
 import gzip
 import re
+import json
+import logging
+import sys
+import traceback
+import uuid
+from pathlib import Path
+from typing import Optional, Dict, Any
+from logging.handlers import RotatingFileHandler, TimedRotatingFileHandler
+from contextlib import contextmanager
+
+
+class JSONFormatter(logging.Formatter):
+    """JSON formatter for structured logging"""
+    
+    def format(self, record):
+        log_obj = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'level': record.levelname,
+            'logger': record.name,
+            'message': record.getMessage(),
+            'module': record.module,
+            'function': record.funcName,
+            'line': record.lineno,
+        }
+        
+        if hasattr(record, 'trace_id'):
+            log_obj['trace_id'] = record.trace_id
+            
+        if hasattr(record, 'extra_fields'):
+            log_obj.update(record.extra_fields)
+            
+        if record.exc_info:
+            log_obj['exception'] = {
+                'type': record.exc_info[0].__name__,
+                'message': str(record.exc_info[1]),
+                'traceback': traceback.format_exception(*record.exc_info)
+            }
+            
+        return json.dumps(log_obj)
+
+
+def setup_structured_logging(
+    name: str,
+    log_file: Optional[str] = None,
+    level: int = logging.INFO,
+    json_format: bool = True,
+    max_bytes: int = 10 * 1024 * 1024,
+    backup_count: int = 5
+) -> logging.Logger:
+    """Setup structured logging with rotation"""
+    logger = logging.getLogger(name)
+    logger.setLevel(level)
+    logger.handlers = []
+    
+    if json_format:
+        formatter = JSONFormatter()
+    else:
+        formatter = logging.Formatter(
+            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        )
+    
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setFormatter(formatter)
+    logger.addHandler(console_handler)
+    
+    if log_file:
+        Path(log_file).parent.mkdir(parents=True, exist_ok=True)
+        file_handler = RotatingFileHandler(
+            log_file, maxBytes=max_bytes, backupCount=backup_count
+        )
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
+    
+    return logger
 
 class LogManager:
     def __init__(self, log_dir="logs"):

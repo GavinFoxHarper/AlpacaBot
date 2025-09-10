@@ -22,8 +22,8 @@ import schedule
 import pytz
 
 # Market monitoring components
-from live_market_learner import LiveMarketLearner
-from prediction_tracker import PredictionTracker
+from training.live_market_learner import LiveMarketLearner
+from training.prediction_tracker import PredictionTracker
 
 # Strategy components for prediction generation
 try:

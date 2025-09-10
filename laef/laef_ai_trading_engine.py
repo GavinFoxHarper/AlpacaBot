@@ -291,9 +291,62 @@ class LAEFAITradingEngine:
         """
         Track predictions for continuous learning and threshold adjustment.
         """
-        # This would connect to an online learning system in production
-        # For now, just log the prediction
+        # Log the prediction
         logging.debug(f"[LAEF AI] {symbol}: Action={action}, Confidence={confidence:.2%}, Q={q_values}")
+        
+        # Save to database for live monitoring
+        try:
+            import sqlite3
+            import json
+            from datetime import datetime
+            from pathlib import Path
+            
+            # Ensure directory exists
+            db_dir = Path("logs/training")
+            db_dir.mkdir(parents=True, exist_ok=True)
+            
+            # Connect to database
+            db_path = db_dir / "predictions.db"
+            conn = sqlite3.connect(db_path)
+            cursor = conn.cursor()
+            
+            # Create table if not exists
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS predictions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    timestamp DATETIME,
+                    symbol TEXT,
+                    action TEXT,
+                    confidence REAL,
+                    q_values TEXT,
+                    price REAL,
+                    outcome TEXT,
+                    profit REAL,
+                    prediction_accuracy TEXT
+                )
+            ''')
+            
+            # Insert prediction
+            cursor.execute('''
+                INSERT INTO predictions (timestamp, symbol, action, confidence, q_values, price, outcome, profit, prediction_accuracy)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (
+                datetime.now().isoformat(),
+                symbol,
+                action,
+                confidence,
+                json.dumps(q_values.tolist() if q_values is not None else []),
+                0.0,  # Will be updated with actual price
+                'pending',
+                0.0,
+                'pending'
+            ))
+            
+            conn.commit()
+            conn.close()
+            
+        except Exception as e:
+            logging.warning(f"Could not track prediction to database: {e}")
     
     def execute_trade(self, symbol: str, action: str, position_size: float, 
                      current_price: float, q_values: np.ndarray = None) -> bool:

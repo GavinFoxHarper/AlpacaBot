@@ -1,0 +1,87 @@
+{
+  "timestamp": "2025-09-09T06:00:22.023696",
+  "runtime": "3:13:04.692487",
+  "components": {
+    "q_learning": {
+      "status": "ACTIVE",
+      "last_update": "2025-08-13T06:53:43.138147",
+      "model_size_kb": 75.9619140625,
+      "epsilon": 0.971,
+      "learning_rate": 0.001
+    },
+    "predictions": {
+      "last_24h_predictions": 6,
+      "avg_confidence": 0.733,
+      "accuracy_rate": 0,
+      "symbols_tracked": 3,
+      "learning_updates": 2,
+      "avg_improvement": 0
+    },
+    "strategies": {
+      "momentum_scalping": {
+        "trades": 0,
+        "profit": 0,
+        "active": true
+      },
+      "mean_reversion": {
+        "trades": 0,
+        "profit": 0,
+        "active": true
+      },
+      "statistical_arbitrage": {
+        "trades": 0,
+        "profit": 0,
+        "active": true
+      },
+      "dual_model_swing": {
+        "trades": 0,
+        "profit": 0,
+        "active": true
+      },
+      "pattern_recognition": {
+        "trades": 0,
+        "profit": 0,
+        "active": true
+      },
+      "time_based": {
+        "trades": 0,
+        "profit": 0,
+        "active": true
+      },
+      "news_sentiment": {
+        "trades": 0,
+        "profit": 0,
+        "active": true
+      },
+      "hybrid_adaptive": {
+        "trades": 0,
+        "profit": 0,
+        "active": true
+      },
+      "reinforced_grid": {
+        "trades": 0,
+        "profit": 0,
+        "active": true
+      }
+    },
+    "portfolio": {
+      "current_value": 101828.35,
+      "daily_change": 219.34,
+      "daily_change_pct": 0.22,
+      "total_change": 405.97,
+      "total_change_pct": 0.4,
+      "positions": 11,
+      "buying_power": 80408.77,
+      "win_rate": 100.0,
+      "total_trades": 11
+    },
+    "model_files": {
+      "q_learning": {
+        "file": "q_model.keras",
+        "size_kb": 75.96,
+        "last_modified": "2025-08-13T06:53:43.138147",
+        "age_hours": 647.11
+      }
+    }
+  }
+}

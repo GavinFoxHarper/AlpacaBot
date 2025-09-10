@@ -1,0 +1,59 @@
+{
+  "status": "completed",
+  "initial_cash": 100000,
+  "final_value": 101644.7110426942,
+  "total_return": 1.6447110426941944,
+  "symbols": [
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "TSLA",
+    "NVDA"
+  ],
+  "start_date": "2025-06-11",
+  "end_date": "2025-09-09",
+  "total_trades": 133,
+  "winning_trades": 80,
+  "losing_trades": 53,
+  "win_rate": 60.150375939849624,
+  "avg_profit": 69.58583004016876,
+  "avg_loss": -61.75975466343144,
+  "sharpe_ratio": 1.5524079940591704,
+  "total_decisions": 305,
+  "buy_signals": 134,
+  "sell_signals": 133,
+  "hold_signals": 38,
+  "symbol_pnl": {
+    "AAPL": {
+      "total_pnl": -91.13581541442818,
+      "trades": 26,
+      "wins": 13,
+      "losses": 13
+    },
+    "MSFT": {
+      "total_pnl": 506.98752041625903,
+      "trades": 27,
+      "wins": 17,
+      "losses": 10
+    },
+    "TSLA": {
+      "total_pnl": 248.3638509826642,
+      "trades": 26,
+      "wins": 14,
+      "losses": 12
+    },
+    "NVDA": {
+      "total_pnl": 543.3418622283934,
+      "trades": 27,
+      "wins": 18,
+      "losses": 9
+    },
+    "GOOGL": {
+      "total_pnl": 1086.0419878387465,
+      "trades": 27,
+      "wins": 18,
+      "losses": 9
+    }
+  },
+  "grand_total_pnl": 2293.599406051635
+}

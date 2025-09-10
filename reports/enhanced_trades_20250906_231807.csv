@@ -1,3 +1,0 @@
-date,symbol,action,shares,price,cost,reason,technical_reason,cash_after,total_position,avg_price
-2024-01-02 00:00:00-05:00,AAPL,BUY,13,184.08151245117188,2395.452721527099,Strong upward momentum detected. Algorithm confidence: 43%. Good entry point for potential gains.,BUY: Momentum entry Q=0.428 >= 0.3,7604.547278472901,13,184.08151245117188
-2024-01-04 00:00:00-05:00,AAPL,BUY,10,180.38279724121094,1805.6318003845213,Strong upward momentum detected. Algorithm confidence: 30%. Good entry point for potential gains.,BUY: Momentum entry Q=0.300 >= 0.3,5798.91547808838,23,182.47337540336278

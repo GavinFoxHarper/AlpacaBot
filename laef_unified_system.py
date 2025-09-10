@@ -238,7 +238,10 @@ class LAEFUnifiedSystem:
             print(f"[ERROR] Quick backtest failed: {e}")
             self.logger.error(f"Quick backtest error: {e}", exc_info=True)
         
-        input("\nPress Enter to continue...")
+        try:
+            input("\nPress Enter to continue...")
+        except EOFError:
+            print("Backtest completed.")
     
     def _run_advanced_backtest(self):
         """Advanced backtest with full configuration options"""

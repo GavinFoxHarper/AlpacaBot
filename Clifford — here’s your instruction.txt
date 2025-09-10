@@ -1,0 +1,146 @@
+Clifford — here’s your instruction rewritten as a hardcore, bot-facing spec.
+
+LAEF Codebase: Autonomous Audit, Remediation, and Ops Orchestration
+Scope of Work
+
+Ingest the entire repository (all Python, configs, UI assets, notebooks, shell/batch, Docker, CI). Build a full-program IR (AST + import graph + symbol table + control/data-flow). Perform static + dynamic integrity checks, auto-patch gaps, and provision deterministic startup for live learning monitor + paper trading at 09:00 America/New_York on valid US trading days. Ensure the frontend functions and binds to back-end services.
+
+Inputs
+
+Source tree root.
+
+.env / secrets interface (keys for Alpaca, brokers, telemetry).
+
+Configs (YAML/JSON/TOML/ENV) for strategy, scheduler, symbols, risk.
+
+Known modules: agent_unified.py, live_trader_unified.py, backtester_main.py, portfolio_live.py, portfolio_backtest.py, indicators.py, scanner.py, state_utils.py, trading_logic.py, plus any UI/frontend.
+
+Analysis Pipeline
+
+Graph Build
+
+Import DAG, call graph, type lattice, CFG/DFG per function.
+
+Detect dangling references (declared/mentioned but undefined), partial stubs, dead code, unreachable blocks, shadowed vars, circular deps.
+
+Contract Inference
+
+Infer pre/postconditions for public APIs; generate @typing.overload and Protocols; enforce with mypy (strict) + pydantic runtime validation where I/O crosses boundaries (broker, file, network).
+
+Spec Conformance
+
+Verify the code actually implements declared features:
+
+Ticker loading → indicator extraction → state formatting → Q-value prediction → FIFO portfolio logic → market-open gate (live only) → order routing → logging.
+
+Strategy router respects config switching; no hardcoded shortcuts.
+
+Experience buffer and live learning hooks are wired.
+
+Risk & Broker Hygiene
+
+Position sizing/stop-loss/take-profit idempotency; dedupe order submits on retry; throttle to API rate limits; reconcile fills vs. intents.
+
+Numerics & State
+
+Floating-point stability (NaNs/inf guards), timezone-aware timestamps (NY), deterministic random seeds; persistent state schema migrations (if any).
+
+Frontend Audit
+
+Build/lint/bundle; ensure env var injection; API route typing (OpenAPI/TS types); component → endpoint contract tests; 404/500 UX fallback; auth gating (if applicable).
+
+Remediation/Autofix
+
+Autogenerate missing function bodies from call sites + tests; or raise stub-fail CI with actionable skeletons.
+
+Collapse duplicate logic; extract pure functions for indicators/filters; promote constants to config.
+
+Break import cycles via interface modules; move side-effects to if __name__ == "__main__" or app factory.
+
+Verification Battery
+
+Unit tests: ≥90% branch coverage on indicators, portfolio FIFO, signal logic, order router, time-gating.
+
+Property tests (Hypothesis): FIFO invariants, P&L monotonicity under synthetic fills, signal stability under jitter.
+
+Golden tests: fixed historical window → fixed decisions.
+
+Integration tests: sandbox broker (paper) with mocked network faults (timeouts, 429, stale quotes).
+
+Frontend e2e: smoke routes, form → order preview mock, live monitor tiles render with mock stream.
+
+Schedulers & Daily Orchestration
+
+Trading calendar aware (NYSE): skip weekends/holidays, handle early closes.
+
+Start-of-day (09:00 ET)
+
+Launch paper trader with today’s config.
+
+Launch live learning monitor (stream subscribe, metrics, anomaly alerts).
+
+Optional: preload watchlist + indicator warmups at 08:30 ET.
+
+Implementation options (choose all that fit OS):
+
+Python APScheduler (CronTrigger TZ=America/New_York) in daemon orchestrator.
+
+Linux: systemd service + timer (OnCalendar=Mon–Fri 09:00 NY; ConditionPathExists calendars/market_open).
+
+Windows: Task Scheduler XML (NY TZ) invoking venv\python.exe orchestrator.py --daily.
+
+Fallback: crontab with TZ="America/New_York" and holiday guard script.
+
+Idempotency: single-instance lock (PID/Redis/file lock), re-entry safe, health endpoint /healthz.
+
+Ops/Observability
+
+Structured logs (JSON) with trace IDs; rotating handlers.
+
+Metrics: latency, fills, slippage, win-rate, drawdown, exposure, Sharpe-like, error rates; Prometheus or StatsD.
+
+Alerts: threshold breaches to email/Slack/webhook (secrets-backed).
+
+Artifacts: daily run report (HTML/MD), equity curve PNG/CSV, order audit log, feature snapshot parquet.
+
+Security & Secrets
+
+No secrets in logs; .env + OS keychain; masked dumps.
+
+Principle of least privilege API keys; read/write scopes split if supported.
+
+Frontend Requirements (if present)
+
+Live dashboard tiles for: positions, P&L, recent fills, watchlist, signals, logs tail.
+
+WebSocket/SSE stream from back-end broker adapter; exponential backoff reconnect.
+
+Build step validates .env values; 404 fallback to index for SPA.
+
+Deliverables
+
+REPORT.md: deficiencies found, fixes applied, residual risks.
+
+/tests with pytest suite, golden fixtures, Hypothesis props.
+
+orchestrator.py: single entrypoint for daily run; supports --dry-run, --paper, --live-monitor-only.
+
+Scheduler configs: systemd unit/timer, Windows Task Scheduler XML, or APScheduler in-process.
+
+Makefile / tasks.ps1: make lint test typecheck build run schedule.
+
+CI: Lint (ruff), mypy (strict), pytest with coverage gate ≥85%, build, artifact upload.
+
+Acceptance Criteria (hard)
+
+No unresolved symbols, no TODO stubs on critical path.
+
+End-to-end paper trade launches automatically 09:00 ET on trading days without manual intervention.
+
+Live learning monitor connects to streams, logs metrics, and produces a daily report.
+
+Frontend builds cleanly and renders live telemetry with mockable back-end.
+
+Backtests reproduce deterministic decisions for a fixed seed/data slice.
+
+If you want, I can generate orchestrator.py + APScheduler wiring and the systemd/Task Scheduler files next, along with a pytest scaffold that targets your FIFO and order-routing invariants.

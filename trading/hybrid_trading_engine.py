@@ -19,20 +19,20 @@ class HybridTradingEngine:
     def __init__(self, portfolio: FIFOPortfolio, custom_config: dict = None):
         self.portfolio = portfolio
         
-        # ADJUSTED SETTINGS FOR ACTUAL TRADING
+        # OPTIMIZED SETTINGS FOR BETTER PERFORMANCE
         self.thresholds = {
-            'q_buy': 0.30,                    # Lowered from 0.40
-            'q_sell': 0.35,                   # Raised from 0.20 - must be higher than q_buy
-            'ml_profit_peak': 0.25,           # Lowered from 0.40 - more realistic
-            'day_trade_profit': 0.005,        # 0.5% instead of 1.5% - achievable daily
-            'swing_trade_profit': 0.015,      # 1.5% instead of 4% - realistic swing
-            'stop_loss_pct': 0.98,            # 2% stop loss instead of 7%
-            'momentum_threshold': 0.01,        # 1% momentum instead of 2%
-            'rsi_oversold': 35,               # Less aggressive oversold
-            'rsi_overbought': 65,             # More restrictive
-            'max_risk_per_trade': 0.05,       # 5% risk instead of 8%
-            'max_position_size': 0.15,        # 15% position instead of 25%
-            'max_hold_hours': 48,             # 2 days max for backtesting
+            'q_buy': 0.35,                    # Conservative entry threshold
+            'q_sell': 0.30,                   # Exit when Q drops below this
+            'ml_profit_peak': 0.35,           # ML confidence for profit taking
+            'day_trade_profit': 0.008,        # 0.8% day trade profit target
+            'swing_trade_profit': 0.02,       # 2% swing trade profit target
+            'stop_loss_pct': 0.98,            # 2% stop loss
+            'momentum_threshold': 0.005,       # 0.5% momentum threshold
+            'rsi_oversold': 30,               # Standard oversold level
+            'rsi_overbought': 70,             # Standard overbought level
+            'max_risk_per_trade': 0.03,       # 3% risk per trade
+            'max_position_size': 0.10,        # 10% max position size
+            'max_hold_hours': 48,             # 2 days max hold time
         }
         
         # Apply custom config
